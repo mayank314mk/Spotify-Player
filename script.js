@@ -8,61 +8,29 @@ document.querySelector(".close").addEventListener("click", () => {
 // let covers = [];
 let capLib = [];
 async function getLibrary() {
-    let a = await fetch(".library/");
-    let b = await a.text();
-    // console.log(b)
-    let libPage = document.createElement("div");
-    libPage.innerHTML = b;
-    // console.log(libPage)
-    // console.log(Array.from(libPage.querySelectorAll("a")).slice(1));
-    let library = [];
-    Array.from(libPage.querySelectorAll("a")).slice(1).forEach(element => {
-        if (element.href != "../") {
-            // console.log(element)
-            let idx = element.href.indexOf("library")
-            // console.log(element.href.slice(0,-1).replaceAll("%20"," "))
-            let plName = element.href.slice(idx + 10).slice(0, -1).replaceAll("%20", " ");
-            // console.log(plName)
-            library.push(plName)
-            plName = plName.replace(/\b\w/g, function (char) {
-                return char.toUpperCase();
-            });
-            capLib.push(plName);
-        }
+    let a = await fetch("./library.json");
+    let data = await a.json();
+
+    let library = Object.keys(data);
+
+    capLib = [];
+
+    library.forEach(plName => {
+
+        let capName = plName.replace(/\b\w/g, function (char) {
+            return char.toUpperCase();
+        });
+
+        capLib.push(capName);
     });
-    // console.log(library);
+
     return library;
 }
 async function getSongs(playlist) {
-    let a = await fetch(`.library/${playlist}/`);
-    let b = await a.text();
-    // console.log(b)
-    let playlistPage = document.createElement("div");
-    playlistPage.innerHTML = b;
-    // console.log(playlistPage)
-    // console.log(Array.from(playlistPage.querySelectorAll("a")).slice(1));
-    let songs = [];
-    Array.from(playlistPage.querySelectorAll("a")).slice(1).forEach(element => {
-        if (element.href != "../") {
-            // console.log(element);
-            let idx = element.href.indexOf(playlist)
-            // console.log(playlist)
-            //     console.log(element.href.slice(element.href.indexOf(playlist.replaceAll(" ","%20"))
-            // + playlist.replaceAll(" ","%20").length+3))
-            let songName = element.href.slice(element.href.indexOf(playlist.replaceAll(" ", "%20"))
-                + playlist.replaceAll(" ", "%20").length + 3).replaceAll("%20", " ");
-            // if (songName.substring(songName.length - 4).toLowerCase() == ".mp3" || songName.substring(songName.length - 4) == ".mp4")
-            songs.push(songName)
-            // else if (songName.substring(songName.length - 4).toLowerCase() == ".jpg" || songName.substring(songName.length - 4).toLowerCase() == ".png" || songName.substring(songName.length - 4).toLowerCase() == ".svg" || songName.substring(songName.length - 4) == ".gif" || songName.substring(songName.length - 5).toLowerCase() == ".jepg" || songName.substring(songName.length - 5).toLowerCase() == ".webp" || songName.substring(songName.length - 4).toLowerCase() == ".avif") covers.push(songName);
-            // console.log(songName.substring(songName.length-3));
-            songName = songName.replace(/\b\w/g, function (char) {
-                return char.toUpperCase();
-            });
-            capLib.push(songName);
-        }
-    });
-    // console.log(songs);
-    return songs;
+    let a = await fetch("./library.json");
+    let data = await a.json();
+
+    return data[playlist];
 
 }
 
