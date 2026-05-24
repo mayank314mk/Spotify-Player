@@ -8,7 +8,7 @@ document.querySelector(".close").addEventListener("click", () => {
 // let covers = [];
 let capLib = [];
 async function getLibrary() {
-    let a = await fetch("https://mayank314mk.github.io/Spotify-Player/library/");
+    let a = await fetch("/Spotify-Player/library/");
     let b = await a.text();
     // console.log(b)
     let libPage = document.createElement("div");
@@ -34,7 +34,7 @@ async function getLibrary() {
     return library;
 }
 async function getSongs(playlist) {
-    let a = await fetch(`https://mayank314mk.github.io/Spotify-Player/library/${playlist}/`);
+    let a = await fetch(`/Spotify-Player/library/${playlist}/`);
     let b = await a.text();
     // console.log(b)
     let playlistPage = document.createElement("div");
