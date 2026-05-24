@@ -260,7 +260,11 @@ async function main() {
         // let plCard=document.createElement("div");
         // plCard.innerHTML=;
         let hasCover = false;
-        songs.forEach(songName => {
+        for (let indextemp = 0; indextemp < songs.length; indextemp++) {
+            const songName = songs[indextemp];
+            
+        // }
+        // songs.forEach(songName => {
             if (songName.substring(songName.length - 4).toLowerCase() == ".jpg" || songName.substring(songName.length - 4).toLowerCase() == ".png" || songName.substring(songName.length - 4).toLowerCase() == ".svg" || songName.substring(songName.length - 4) == ".gif" || songName.substring(songName.length - 5).toLowerCase() == ".jepg" || songName.substring(songName.length - 5).toLowerCase() == ".webp" || songName.substring(songName.length - 4).toLowerCase() == ".avif") {
                 hasCover = true;
                 document.querySelector(".library").innerHTML += `<div class="playlistCard"><img  src="library/${library[index]}/${songName}" alt="" class="cover">
@@ -297,10 +301,11 @@ async function main() {
 
                     });
                 }
+                break;
             }
 
-        });
-        
+        // });
+        }
         if (!hasCover) {
             let prim1, prim2, prim3;
             let sec1 = 0, sec2 = 0, sec3 = 0;
@@ -373,7 +378,7 @@ async function main() {
                             <div class="songPL">${capLib[0]}</div>
                             </div>
                             </div>`;
-                            sIndex++;
+                            
                             // console.log(document.querySelector(".songCard").dataset.pl)
                     document.querySelectorAll(".back2")[document.querySelectorAll(".back2").length - 1].style.background = `linear-gradient(135deg,rgb(${prim1},${prim2},${prim3}),rgb(${sec1},${sec2},${sec3}))`;
                     if (!currSongImageRendered) {
@@ -395,6 +400,7 @@ async function main() {
                         currSongImageRendered = true;
                     }
                 }
+                sIndex++;
                 });
             }
     //         for (let indexOfSong = 0; indexOfSong < document.querySelectorAll(".songCard").length; indexOfSong++) {
@@ -413,27 +419,34 @@ async function main() {
         }
 
     }
+    // let i=0;
     for (let indexOfSong = 0; indexOfSong < document.querySelectorAll(".songCard").length; indexOfSong++) {
                 const element = document.querySelectorAll(".songCard")[indexOfSong];
+                // i++;
                 let songs=await getSongs(library[0]);
                 element.addEventListener("click",async ()=>{
-                    if((songs[indexOfSong].substring(songs[indexOfSong].length - 4).toLowerCase() == ".mp3" || songs[indexOfSong].substring(songs[indexOfSong].length - 4).toLowerCase() == ".mp4")){
+                    playSong(library[0],songs[Number(element.dataset.sindex)],element)
+                    // console.log(library[0],songs[indexOfSong],element,indexOfSong);
+                    displayCurrSong(library[0],songs[Number(element.dataset.sindex)],0);
+                            })       
+    }
+                    // if((songs[indexOfSong].substring(songs[indexOfSong].length - 4).toLowerCase() == ".mp3" || songs[indexOfSong].substring(songs[indexOfSong].length - 4).toLowerCase() == ".mp4")){
                         // console.log(songs[indexOfSong])
-                playSong(library[0],songs[indexOfSong],element)
-                displayCurrSong(library[0],songs[indexOfSong],0);
-            }
-            else{
-                playSong(library[0],songs[indexOfSong+1],element)
-                displayCurrSong(library[0],songs[indexOfSong+1],0);
-            }
+            // }
+            // else{
+                
+            //     playSong(library[0],songs[indexOfSong+1],element)
+            //     console.log(library[0],songs[indexOfSong+1],element,indexOfSong+1);
+            //     displayCurrSong(library[0],songs[indexOfSong+1],0);
+            //     indexOfSong++;
+            // }
             // audio.addEventListener("timeupdate",()=>{
             //     element.style.backgroundColor="#1f1f1f";
             // })
             // audio.addEventListener("ended",()=>{
             //     element.style.backgroundColor="#a05050";
             // })
-        })       
-    }
+
     for (let index = 0; index < Array.from(document.querySelectorAll(".playlistCard")).length; index++) {
         const element = Array.from(document.querySelectorAll(".playlistCard"))[index];
         element.addEventListener("click", async () => {
@@ -446,7 +459,9 @@ async function main() {
                 // let plCard=document.createElement("div");
                 // plCard.innerHTML=;
             let hasCover = false;
-            songs.forEach(songName => {
+            for (let indextemp = 0; indextemp < songs.length; indextemp++) {
+            const songName = songs[indextemp];
+            // songs.forEach(songName => {
                 
                 if (songName.substring(songName.length - 4).toLowerCase() == ".jpg" || songName.substring(songName.length - 4).toLowerCase() == ".png" || songName.substring(songName.length - 4).toLowerCase() == ".svg" || songName.substring(songName.length - 4) == ".gif" || songName.substring(songName.length - 5).toLowerCase() == ".jepg" || songName.substring(songName.length - 5).toLowerCase() == ".webp" || songName.substring(songName.length - 4).toLowerCase() == ".avif") {
                     hasCover = true;
@@ -462,7 +477,7 @@ async function main() {
                         <div class="songPL">${capLib[index]}</div>
                         </div>
                         </div>`);
-                        sIndex++;
+                        
                         // document.querySelectorAll(".songCard")[document.querySelectorAll(".songCard").length-1].addEventListener("click",()=>{
                         //     playSong(library[index],element)
                         //     console.log(element)
@@ -482,7 +497,7 @@ async function main() {
                         // });
                         // }); 
                     }
-                    
+                    sIndex++;
                         // console.log(document.querySelector(".songCard").dataset.pl)
                         if (!currSongImageRendered) {
                             // document.querySelector(".currSong").getElementsByTagName("img")[0].src = `library/${library[index]}/${songName}`;
@@ -499,21 +514,17 @@ async function main() {
                             currSongImageRendered = true;
                         }
                     });
+                    break;
                 }
-            });
+            // });
+            }
             for (let indexOfSong = 0; indexOfSong < document.querySelectorAll(".songCard").length; indexOfSong++) {
                 const element = document.querySelectorAll(".songCard")[indexOfSong];
-                element.addEventListener("click",()=>{
-                    if((songs[indexOfSong].substring(songs[indexOfSong].length - 4).toLowerCase() == ".mp3" || songs[indexOfSong].substring(songs[indexOfSong].length - 4).toLowerCase() == ".mp4")){
-                        // console.log(songs[indexOfSong])
-                playSong(library[index],songs[indexOfSong],element)
-                displayCurrSong(library[index],songs[indexOfSong],index);
-            }
-            else{
-                playSong(library[index],songs[indexOfSong+1],element)
-                displayCurrSong(library[index],songs[indexOfSong+1],index);
-            }
-        })       
+                element.addEventListener("click",async ()=>{
+                    playSong(element.dataset.pl,songs[Number(element.dataset.sindex)],element)
+                    console.log(element.dataset.pl,songs[Number(element.dataset.sindex)],element,Number(element.dataset.sindex));
+                    displayCurrSong(element.dataset.pl,songs[Number(element.dataset.sindex)],library.indexOf(element.dataset.pl));
+                            })    
     }
             
             if (!hasCover){
@@ -557,17 +568,11 @@ async function main() {
                 });
                 for (let indexOfSong = 0; indexOfSong < document.querySelectorAll(".songCard").length; indexOfSong++) {
                 const element = document.querySelectorAll(".songCard")[indexOfSong];
-                element.addEventListener("click",()=>{
-                    if((songs[indexOfSong].substring(songs[indexOfSong].length - 4).toLowerCase() == ".mp3" || songs[indexOfSong].substring(songs[indexOfSong].length - 4).toLowerCase() == ".mp4")){
-                        // console.log(songs[indexOfSong])
-                    playSong(library[index],songs[indexOfSong],element)
-                    displayCurrSong(library[index],songs[indexOfSong],index);
-            }
-            else{
-                playSong(library[index],songs[indexOfSong+1],element)
-                displayCurrSong(library[index],songs[indexOfSong+1],index);
-            }
-        })       
+                element.addEventListener("click",async ()=>{
+                    playSong(element.dataset.pl,songs[Number(element.dataset.sindex)],element)
+                    // console.log(element.dataset.pl,songs[indexOfSong],element,indexOfSong);
+                    displayCurrSong(element.dataset.pl,songs[Number(element.dataset.sindex)],library.indexOf(element.dataset.pl));
+                            })       
     }
             // }
             }
@@ -640,7 +645,7 @@ main();
             //                 <img src="library/non copyright sounds/cover.jpg" alt="">
             //                 <div class="info">
             //                     <div class="songName">Daftar Ki Girl _ Yo Yo Honey Singh _ Desi Kalakaar, Honey Singh New Songs
-            //                         2014.mp3</div>
+            //                         2014</div>
             //                     <div class="songPL">Yo Yo Honey Singh</div>
             //                 </div>
             //             </div>`;
