@@ -66,6 +66,7 @@ audio.addEventListener("loadedmetadata",()=>{
 document.querySelectorAll(".seekbar").forEach(element => {
     element.addEventListener("click",(e)=>{
         // console.log(element.style.width)
+        // if(audio.src)
         audio.currentTime=audio.duration*Math.floor(e.offsetX/element.offsetWidth*100)/100;
     })
 });
@@ -254,6 +255,8 @@ async function displayCurrSong(playlist,song,indexForCapLib){
 async function main() {
     // console.log(library);
     library = await getLibrary()
+    // let songs=await getSongs(library[0]);
+    let song;
     for (let index = 0; index < library.length; index++) {
         const element = library[index];
         let songs = await getSongs(element);
@@ -276,7 +279,8 @@ async function main() {
                     document.querySelector(".playll").innerHTML = capLib[0];
                     let currSongImageRendered = false;
                     songs.forEach(element => {
-                        if (element.substring(element.length - 4).toLowerCase() == ".mp3" || element.substring(element.length - 4).toLowerCase() == ".mp4")
+                        
+                        if (element.substring(element.length - 4).toLowerCase() == ".mp3" || element.substring(element.length - 4).toLowerCase() == ".mp4"){
                             document.querySelector(".songs").innerHTML += `<div class="songCard" data-sIndex="${sIndex}"
                             data-pl="${library[index]}">
                             <img src="library/${library[index]}/${songName}" alt="">
@@ -286,6 +290,8 @@ async function main() {
                             <div class="songPL">${capLib[0]}</div>
                             </div>
                             </div>`;
+                            if(sIndex==0){audio.src=`library/${library[0]}/${element}`}
+                        }
                             // console.log(document.querySelector(".songCard").dataset.pl)
                             sIndex++;
                         if (!currSongImageRendered) {
