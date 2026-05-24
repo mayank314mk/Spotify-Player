@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Player</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="left">
+            <img src="assets/logo.svg" alt="" class="logo">
+            <div class="home home1 burger"><img src="assets/menu_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt=""
+                    class="homeicon"></div>
+            <div class="home home0"><img src="assets/home.svg" alt="" class="homeicon"></div>
+            <div class="home home2"><img src="assets/search.svg" alt="" class="searchphone"></div>
+            <!-- <div class="home home3">
+                <div class="volume">
+                    <img src="assets/volume.svg" alt="">
+                    <div class="volback"><input type="range" name="" class="volrange" id=""></div>
+                </div>
+            </div> -->
+            <div class="search"><img src="assets/search.svg" alt="" class="searchicon"><input type="text"
+                    placeholder="What do you want to play?" class="searchInp">
+                <div class="searchright">
+                    <div class="divider"></div><img src="assets/browse.svg" alt="" class="browse">
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="prim f16">Premium</div>
+            <div class="support f16">Support</div>
+            <div class="download f16">Download</div>
+            <div class="divider m16"></div>
+            <div class="install f14 m16"><img src="assets/download.svg" alt="" class="installicon">Install App</div>
+            <div class="signup f14 m16">Sign up</div>
+            <div class="login">Log in</div>
+        </div>
+    </nav>
+    <main class="content">
+        <div class="leftside">
+            <div class="ltitle">
+                <div class="playll"></div>
+                <div class="home close"><img src="assets/add.svg" alt="" class="add"></div>
+            </div>
+            <div class="songs">
+
+            </div>
+        </div>
+        <div class="rightside">
+            <div class="ltitle">
+                <div class="lib">Your Library</div>
+                <div class="home"><img src="assets/add.svg" alt="" class="add"></div>
+            </div>
+            <div class="library">
+            </div>
+        </div>
+    </main>
+    <div class="player">
+        <div class="currSong">
+            <div class="songCard">
+                <img src="" alt="">
+                <div class="info">
+                    <div class="songName"></div>
+                    <div class="songPL"></div>
+                </div>
+            </div>
+        </div>
+        <div class="controls">
+            <div class="timeline tl1">
+                <div class="currTime">0:00</div>
+                <div class="seekbar">
+                    <div class="seekbarFill"></div>
+                    <div class="thumb"></div>
+                </div>
+                <div class="duration">0:00</div>
+            </div>
+            <div class="buttons">
+                <img src="assets/prev.svg" class="prev" alt="">
+                <div class="playbg"><img src="assets/pause.svg" class="plapau" alt=""></div>
+                <img src="assets/prev.svg" class="next" alt="">
+            </div>
+            <div class="timeline tl2">
+                <div class="currTime">0:00</div>
+                <div class="seekbar">
+                    <div class="seekbarFill"></div>
+                    <div class="thumb"></div>
+                </div>
+                <div class="duration">0:00</div>
+            </div>
+        </div>
+        <div class="volume">
+            <img src="assets/volume.svg" class="mute" alt="">
+            <input type="range" name="" class="volrange" id="">
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
