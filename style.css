@@ -754,8 +754,7 @@ body {
 
 @media (max-width: 648px) {
 
-    .search,
-    .home0 {
+    .search {
         display: none;
     }
 
