@@ -45,7 +45,7 @@ Spotify-Player/
 
 ## 📸 Preview
 
-Add screenshots of your project here.
+![Player](assets/player.png)
 
 ## 🎯 Future Improvements
 
