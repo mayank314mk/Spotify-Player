@@ -2,6 +2,10 @@
 
 A responsive Spotify-inspired music player built using **HTML, CSS, and JavaScript**. This project recreates the look and feel of Spotify's web player while providing basic music playback functionality.
 
+# 🌐 Live Demo
+
+👉 https://mayank314mk.github.io/Spotify-Player/
+
 ## 🚀 Features
 
 * Play and pause songs
