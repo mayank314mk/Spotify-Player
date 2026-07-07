@@ -4,7 +4,7 @@ A responsive Spotify-inspired music player built using **HTML, CSS, and JavaScri
 
 # 🌐 Live Demo
 
-👉 https://mayank314mk.github.io/Spotify-Player/
+https://spotify-player-mayank314mk.vercel.app/
 
 ## 🚀 Features
 
